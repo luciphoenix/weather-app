@@ -1,35 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // current location
+  const [location, setLocation] = useState("");
+  const getLocation = (e) => {
+    setLocation(e.target.value);
+  };
 
+  // fetch weather data from server
+  const getWeatherUpdate = (e) => {
+    e.preventDefault();
+    fetch(
+      `https://api.weatherapi.com/v1/current.json?key=6bacda324d074473941142546240401&q=${location}`,
+      { mode: "cors" }
+    )
+      .then((results) => results.json())
+      .then((results) => {
+        console.log(results);
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <h1 className="text-center bg-primary text-light p-2">Weather app</h1>
+      <form action="#" method="get">
+        <div className="form-floating mb-3">
+          <input
+            type="text"
+            className="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            value={location}
+            onChange={getLocation}
+          />
+          <label htmlFor="floatingInput">Location</label>
+        </div>
+        <button className="btn btn-primary" onClick={getWeatherUpdate}>
+          submit
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </form>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
