@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import WeatherInfo from "./components/WeatherInfo";
 
 function App() {
   // current location
@@ -7,6 +8,8 @@ function App() {
   const getLocation = (e) => {
     setLocation(e.target.value);
   };
+
+  const [conditions, setConditions] = useState("");
 
   // fetch weather data from server
   const getWeatherUpdate = (e) => {
@@ -17,14 +20,20 @@ function App() {
     )
       .then((results) => results.json())
       .then((results) => {
-        console.log(results);
+        setConditions(results);
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       <h1 className="text-center bg-primary text-light p-2">Weather app</h1>
-      <form action="#" method="get">
+
+      {/* component for current weather information */}
+      <WeatherInfo conditions={conditions} />
+
+      {/* input for user location */}
+      <form action="#" method="get" className="text-center">
         <div className="form-floating mb-3">
           <input
             type="text"

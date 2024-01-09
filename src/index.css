@@ -5,3 +5,12 @@
   min-height: 100vh;
   max-width: 650px;
 }
+
+.weather-img {
+  width: 150px;
+  height: 150px;
+}
+
+.weather-detail {
+  gap: 10px;
+}
