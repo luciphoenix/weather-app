@@ -43,7 +43,7 @@ function App() {
             value={location}
             onChange={getLocation}
           />
-          <label htmlFor="floatingInput">Location</label>
+          <label htmlFor="floatinginput">Location</label>
         </div>
         <button className="btn btn-primary" onClick={getWeatherUpdate}>
           submit

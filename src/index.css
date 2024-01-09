@@ -11,6 +11,20 @@
   height: 150px;
 }
 
+.default {
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-image: url("/public/update.webp");
+  background-size: cover;
+  font-size: 3rem;
+  font-weight: bolder;
+}
+.empty {
+  display: none;
+}
+
 .weather-detail {
   gap: 10px;
 }
