@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-image: url("/public/update.webp");
+  background-image: url("/update.webp");
   background-size: cover;
   font-size: 3rem;
   font-weight: bolder;
