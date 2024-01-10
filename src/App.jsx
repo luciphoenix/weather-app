@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import WeatherInfo from "./components/WeatherInfo";
+import Footer from "./components/Footer";
 
 function App() {
   // current location
@@ -51,6 +52,7 @@ function App() {
           submit
         </button>
       </form>
+      <Footer />
     </>
   );
 }

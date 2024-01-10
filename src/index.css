@@ -25,6 +25,7 @@
   background-size: cover;
   min-height: 100vh;
   max-width: 650px;
+  position: relative;
 }
 .head {
   font-family: "rubik-shadow";
@@ -76,7 +77,6 @@
   color: rgb(23 44 125);
   font-weight: bolder;
   font-size: 1.2rem;
-  /* letter-spacing: 2px; */
 }
 .details {
   font-family: "big";
@@ -84,6 +84,22 @@
   color: rgb(23 44 125);
 }
 
+footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+footer img {
+  width: 30px;
+}
+.img-container > :first-child {
+  border: 1.9px solid white;
+  border-radius: 1px;
+}
+.img-container {
+  gap: 10px;
+  justify-content: center;
+}
 @media (max-width: 450px) {
   * {
     font-size: 14px;
