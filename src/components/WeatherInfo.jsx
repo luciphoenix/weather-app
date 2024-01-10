@@ -35,7 +35,9 @@ function WeatherInfo({ conditions }) {
         <div className="container my-3">
           <div className="row g-2 weather-detail">
             <div className="col bg-light text-center rounded">
-              <p className="info">Current update</p>
+              <p className="info">
+                Update~<span className="hr">24hr</span>
+              </p>
               <p className="details my-0  ">
                 {conditions
                   ? conditions.location.localtime.split(" ")[1]
@@ -45,13 +47,16 @@ function WeatherInfo({ conditions }) {
             <div className="col bg-light text-center rounded">
               <p className="info">Humidity</p>
               <p className="details my-0">
-                {conditions ? conditions.current.humidity : "Not provided"}
+                {conditions ? conditions.current.humidity : "Not provided"}%
               </p>
             </div>
             <div className="col bg-light text-center rounded">
               <p className="info">Feels like</p>
               <p className="details my-0">
                 {conditions ? conditions.current.feelslike_c : "Not provided"}
+                <span className="celcius">
+                  <sup>o</sup>C
+                </span>
               </p>
             </div>
           </div>

@@ -52,7 +52,7 @@
 }
 
 .weather-detail {
-  font-family: "pacifico";
+  /* font-family: "pacifico"; */
   font-size: 1.2rem;
   gap: 10px;
 }
@@ -67,16 +67,21 @@
 }
 .celcius {
   font-family: initial;
-  font-size: 3rem;
+  font-size: inherit;
+}
+.hr {
+  font-size: 1rem;
 }
 .info {
-  color: rgb(114 65 149);
-  letter-spacing: 2px;
+  color: rgb(23 44 125);
+  font-weight: bolder;
+  font-size: 1.2rem;
+  /* letter-spacing: 2px; */
 }
 .details {
   font-family: "big";
   font-size: 2rem;
-  color: blue;
+  color: rgb(23 44 125);
 }
 
 @media (max-width: 450px) {
