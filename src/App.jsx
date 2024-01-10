@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import WeatherInfo from "./components/WeatherInfo";
 import Footer from "./components/Footer";
+import Search from "./components/Search";
 
 function App() {
   // current location
@@ -25,6 +26,11 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+  const propData = {
+    getLocation,
+    getWeatherUpdate,
+    location,
+  };
 
   return (
     <>
@@ -36,22 +42,7 @@ function App() {
       <WeatherInfo conditions={conditions} />
 
       {/* input for user location */}
-      <form action="#" method="get" className="text-center">
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            value={location}
-            onChange={getLocation}
-          />
-          <label htmlFor="floatingInput">Location</label>
-        </div>
-        <button className="btn btn-primary" onClick={getWeatherUpdate}>
-          submit
-        </button>
-      </form>
+      <Search propData={propData} />
       <Footer />
     </>
   );
