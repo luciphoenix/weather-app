@@ -11,7 +11,7 @@ function WeatherInfo({ conditions }) {
       </div>
 
       <div className={conditions === "" && "empty"}>
-        <p className="text-light text-center fs-1">
+        <p className="text-light text-center location my-0">
           {conditions
             ? conditions.location.name + "," + conditions.location.country
             : "Not provided"}
@@ -22,8 +22,11 @@ function WeatherInfo({ conditions }) {
           title="this is a weather image showing the current state of the sky"
           className="img-fluid d-block mx-auto"
         />
-        <p className="text-light text-center fs-5">
+        <p className="text-light text-center temp">
           {conditions ? conditions.current.temp_c : "Not provided"}
+          <span className="celcius">
+            <sup>o</sup>C
+          </span>
         </p>
         <p className="text-light text-center fs-3">
           {conditions ? conditions.current.condition.text : "Not provided"}
@@ -32,18 +35,22 @@ function WeatherInfo({ conditions }) {
         <div className="container my-3">
           <div className="row g-2 weather-detail">
             <div className="col bg-light text-center rounded">
-              <p>As AT</p>
-              <p>
-                {conditions ? conditions.location.localtime : "Not provided"}
+              <p className="info">Current update</p>
+              <p className="details my-0  ">
+                {conditions
+                  ? conditions.location.localtime.split(" ")[1]
+                  : "Not provided"}
               </p>
             </div>
             <div className="col bg-light text-center rounded">
-              <p>Humidity</p>
-              <p>{conditions ? conditions.current.humidity : "Not provided"}</p>
+              <p className="info">Humidity</p>
+              <p className="details my-0">
+                {conditions ? conditions.current.humidity : "Not provided"}
+              </p>
             </div>
             <div className="col bg-light text-center rounded">
-              <p>Feels like</p>
-              <p>
+              <p className="info">Feels like</p>
+              <p className="details my-0">
                 {conditions ? conditions.current.feelslike_c : "Not provided"}
               </p>
             </div>

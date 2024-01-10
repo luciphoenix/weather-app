@@ -27,7 +27,9 @@ function App() {
 
   return (
     <>
-      <h1 className="text-center bg-primary text-light p-2">Weather app</h1>
+      <h1 className="text-center bg-primary text-light p-2 head">
+        Weather app
+      </h1>
 
       {/* component for current weather information */}
       <WeatherInfo conditions={conditions} />
