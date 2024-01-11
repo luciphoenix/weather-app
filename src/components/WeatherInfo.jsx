@@ -6,10 +6,6 @@ function WeatherInfo({ conditions }) {
   }
   return (
     <>
-      <div className="mx-auto my-3 rounded text-center text-light default">
-        WEATHER UPDATE
-      </div>
-
       <div className={conditions === "" && "empty"}>
         <p className="text-light text-center location my-0">
           {conditions

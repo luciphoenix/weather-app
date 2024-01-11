@@ -4,7 +4,7 @@ import WeatherInfo from "./components/WeatherInfo";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
 import Forecast from "./components/Forecast";
-
+import Error from "./components/Error";
 function App() {
   // current location
   const [location, setLocation] = useState("");
@@ -24,15 +24,20 @@ function App() {
     )
       .then((results) => results.json())
       .then((results) => {
-        setConditions(results);
-        const newForecast = results.forecast.forecastday[0].hour.filter(
-          (hr) => hr.time.split(" ")[1] > date.getHours() + ":00"
-        );
-        setForecast(newForecast);
-      })
-      .catch((err) => console.log(err));
+        // check if a bad request was made
+        if (!results.error) {
+          setConditions(results);
+          const newForecast = results.forecast.forecastday[0].hour.filter(
+            (hr) => hr.time.split(" ")[1] > date.getHours() + ":00"
+          );
+          setForecast(newForecast);
+        } else {
+          // reset states to initail if bad request was made
+          setForecast([]);
+          setConditions("");
+        }
+      });
   };
-  console.log(forecast);
   const propData = {
     getLocation,
     getWeatherUpdate,
@@ -44,12 +49,19 @@ function App() {
       <h1 className="text-center bg-primary text-light p-2 head">
         Weather app
       </h1>
+
       {/* input for user location */}
       <Search propData={propData} />
 
       {/* component for current weather information */}
-      <WeatherInfo conditions={conditions} />
+      <div className="mx-auto my-3 rounded text-center text-light default">
+        WEATHER UPDATE
+      </div>
 
+      {/* checks if there is no error with request */}
+      {conditions !== "" ? <WeatherInfo conditions={conditions} /> : <Error />}
+
+      {/* Renders on whenthere is a search */}
       {forecast.length && <Forecast forecast={forecast} />}
 
       <Footer />
