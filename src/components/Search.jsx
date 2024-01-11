@@ -4,21 +4,18 @@ function Search({ propData }) {
   const { getLocation, getWeatherUpdate, location } = propData;
   return (
     <>
-      <form action="#" method="get" className="text-center">
-        <div className="form-floating mb-3">
-          <input
-            type="text"
-            className="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            value={location}
-            onChange={getLocation}
-          />
-          <label htmlFor="floatingInput">Location</label>
-        </div>
-        <button className="btn btn-primary" onClick={getWeatherUpdate}>
-          Check
-        </button>
+      <form action="#" method="get">
+        <input
+          type="text"
+          className=""
+          id="floatingInput"
+          placeholder="search location...."
+          value={location}
+          onChange={getLocation}
+        />
+        <a href="#" className="search-btn" onClick={getWeatherUpdate}>
+          <img src="../images/search.svg" alt="" className="img-fluid" />
+        </a>
       </form>
     </>
   );

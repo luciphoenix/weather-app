@@ -56,7 +56,26 @@
   font-size: 1.2rem;
   gap: 10px;
 }
-
+form {
+  display: flex;
+  position: relative;
+}
+input {
+  appearance: none;
+  height: 35px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid white;
+}
+.search-btn {
+  position: absolute;
+  right: 10px;
+  top: 15%;
+}
+.search-btn img {
+  width: 25px;
+}
 .location {
   font-family: "gurajada";
   font-size: 3rem;

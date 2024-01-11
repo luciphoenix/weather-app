@@ -44,13 +44,14 @@ function App() {
       <h1 className="text-center bg-primary text-light p-2 head">
         Weather app
       </h1>
+      {/* input for user location */}
+      <Search propData={propData} />
 
       {/* component for current weather information */}
       <WeatherInfo conditions={conditions} />
 
-      {/* input for user location */}
-      <Search propData={propData} />
-      <Forecast forecast={forecast} />
+      {forecast.length && <Forecast forecast={forecast} />}
+
       <Footer />
     </>
   );

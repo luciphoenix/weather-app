@@ -1,9 +1,8 @@
 import PropTypes from "prop-types";
 function Forecast({ forecast }) {
-  console.log("what");
-  console.log(forecast.length);
   return (
     <section>
+      <hr className="border" />
       <h5 className="text-light  forecast-heading">Today weather Forecast</h5>
       <div className="forecasts-container container rounded">
         <div className="row fore-col">
