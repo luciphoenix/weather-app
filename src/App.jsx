@@ -14,10 +14,12 @@ function App() {
 
   const [conditions, setConditions] = useState("");
   const [forecast, setForecast] = useState([]);
+  const [errorState, setErrorState] = useState(false);
   const date = new Date();
   // fetch weather data from server
   const getWeatherUpdate = (e) => {
     e.preventDefault();
+    setErrorState(true);
     fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=6bacda324d074473941142546240401&q=${location}`,
       { mode: "cors" }
@@ -59,7 +61,11 @@ function App() {
       </div>
 
       {/* checks if there is no error with request */}
-      {conditions !== "" ? <WeatherInfo conditions={conditions} /> : <Error />}
+      {conditions !== "" ? (
+        <WeatherInfo conditions={conditions} />
+      ) : (
+        errorState && <Error />
+      )}
 
       {/* Renders on whenthere is a search */}
       {forecast.length && <Forecast forecast={forecast} />}
