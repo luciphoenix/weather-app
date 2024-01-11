@@ -18,7 +18,6 @@
   font-family: "big";
   src: url("/Bigshot_One/BigshotOne-Regular.ttf");
 }
-
 #root {
   background-image: url("/background.jpeg");
   background-repeat: no-repeat;
@@ -99,6 +98,22 @@ footer img {
 .img-container {
   gap: 10px;
   justify-content: center;
+}
+
+/* forecasts */
+.forecast-heading {
+  font-family: "gurajada";
+  font-size: 2rem;
+}
+.forecasts-container {
+  min-height: 100px;
+  margin-bottom: 3rem;
+}
+.fore-col {
+  gap: 5px;
+}
+.fore-col p {
+  font-size: 1.2rem;
 }
 @media (max-width: 450px) {
   * {

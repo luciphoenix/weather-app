@@ -3,6 +3,7 @@ import "./App.css";
 import WeatherInfo from "./components/WeatherInfo";
 import Footer from "./components/Footer";
 import Search from "./components/Search";
+import Forecast from "./components/Forecast";
 
 function App() {
   // current location
@@ -12,20 +13,26 @@ function App() {
   };
 
   const [conditions, setConditions] = useState("");
-
+  const [forecast, setForecast] = useState([]);
+  const date = new Date();
   // fetch weather data from server
   const getWeatherUpdate = (e) => {
     e.preventDefault();
     fetch(
-      `https://api.weatherapi.com/v1/current.json?key=6bacda324d074473941142546240401&q=${location}`,
+      `https://api.weatherapi.com/v1/forecast.json?key=6bacda324d074473941142546240401&q=${location}`,
       { mode: "cors" }
     )
       .then((results) => results.json())
       .then((results) => {
         setConditions(results);
+        const newForecast = results.forecast.forecastday[0].hour.filter(
+          (hr) => hr.time.split(" ")[1] > date.getHours() + ":00"
+        );
+        setForecast(newForecast);
       })
       .catch((err) => console.log(err));
   };
+  console.log(forecast);
   const propData = {
     getLocation,
     getWeatherUpdate,
@@ -43,6 +50,7 @@ function App() {
 
       {/* input for user location */}
       <Search propData={propData} />
+      <Forecast forecast={forecast} />
       <Footer />
     </>
   );
