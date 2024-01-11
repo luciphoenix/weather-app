@@ -13,9 +13,9 @@ function Search({ propData }) {
           value={location}
           onChange={getLocation}
         />
-        <a href="#" className="search-btn" onClick={getWeatherUpdate}>
+        <button className="search-btn" onClick={getWeatherUpdate}>
           <img src="../images/search.svg" alt="" className="img-fluid" />
-        </a>
+        </button>
       </form>
     </>
   );
