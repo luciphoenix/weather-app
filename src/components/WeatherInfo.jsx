@@ -6,7 +6,7 @@ function WeatherInfo({ conditions }) {
   }
   return (
     <>
-      <div className={conditions === "" && "empty"}>
+      <div>
         <p className="text-light text-center location my-0">
           {conditions
             ? conditions.location.name + "," + conditions.location.country
@@ -34,7 +34,7 @@ function WeatherInfo({ conditions }) {
               <p className="info">
                 Update~<span className="hr">24hr</span>
               </p>
-              <p className="details my-0  ">
+              <p className="details my-0">
                 {conditions
                   ? conditions.location.localtime.split(" ")[1]
                   : "Not provided"}

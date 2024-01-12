@@ -47,9 +47,6 @@
   background-size: cover;
   font-size: 2.5rem;
 }
-.empty {
-  display: none;
-}
 
 .weather-detail {
   /* font-family: "pacifico"; */
