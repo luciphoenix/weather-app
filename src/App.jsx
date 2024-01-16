@@ -16,6 +16,7 @@ function App() {
   const [forecast, setForecast] = useState([]);
   const [errorState, setErrorState] = useState(false);
   const date = new Date();
+
   // fetch weather data from server
   const getWeatherUpdate = (e) => {
     e.preventDefault();
@@ -29,8 +30,16 @@ function App() {
         // check if a bad request was made
         if (!results.error) {
           setConditions(results);
+
           const newForecast = results.forecast.forecastday[0].hour.filter(
-            (hr) => hr.time.split(" ")[1] > date.getHours() + ":00"
+            (hr) => {
+              const time = date.getHours();
+              if (time < 2) {
+                time.split("").unshift(0).join("");
+              }
+              console.log(time);
+              return hr.time.split(" ")[1] > time + ":00";
+            }
           );
           setForecast(newForecast);
         } else {
