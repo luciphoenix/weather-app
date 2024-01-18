@@ -33,11 +33,13 @@ function App() {
 
           const newForecast = results.forecast.forecastday[0].hour.filter(
             (hr) => {
-              const time = date.getHours();
-              if (time < 2) {
-                time.split("").unshift(0).join("");
+              // return date in 09:00 form instead of 9:00 formate
+              let time = date.getHours().toString().split("");
+              if (time.length < 2) {
+                time.unshift("0");
               }
-              console.log(time);
+              time = time.join("");
+
               return hr.time.split(" ")[1] > time + ":00";
             }
           );
