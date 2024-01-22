@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 function WeatherInfo({ conditions }) {
   {
     /* weather current image */
